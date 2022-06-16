@@ -16,7 +16,7 @@ public class CarController {
     private final ICarService carService;
 
     @PostMapping("save")
-    public CarDto saveCar(CarDto carDto) {
+    public CarDto saveCar(@RequestBody CarDto carDto) {
         return carService.saveCar(carDto);
     }
 
@@ -26,17 +26,17 @@ public class CarController {
     }
 
     @GetMapping("find/by/type")
-    public List<CarInfoDto> findAllByType(CarType type) {
+    public List<CarInfoDto> findAllByType(@RequestParam CarType type) {
         return carService.findAllCarsByType(type);
     }
 
-    @GetMapping("find/by/id")
-    public CarInfoDto findById(Integer id) {
+    @GetMapping("find/by/id/{id}")
+    public CarInfoDto findById(@PathVariable Integer id) {
         return carService.findCarById(id);
     }
 
-    @DeleteMapping("remove")
-    public void deleteCarById(Integer id) {
+    @DeleteMapping("remove/{id}")
+    public void deleteCarById(@PathVariable Integer id) {
         carService.delete(id);
     }
 }
