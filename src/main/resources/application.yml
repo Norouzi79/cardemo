@@ -1,5 +1,7 @@
 server:
   port: 18050
+  error:
+    include-stacktrace: NEVER
 spring:
   application:
     name: car

@@ -27,6 +27,8 @@ public class WheelService implements IWheelService {
 
     @Override
     public void delete(Integer id) {
-        wheelRepository.deleteById(id);
+        if (wheelRepository.existsById(id)) {
+            wheelRepository.deleteById(id);
+        }
     }
 }

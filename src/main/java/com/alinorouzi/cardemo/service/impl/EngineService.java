@@ -27,6 +27,8 @@ public class EngineService implements IEngineService {
 
     @Override
     public void delete(Integer id) {
-        engineRepository.deleteById(id);
+        if (engineRepository.existsById(id)) {
+            engineRepository.deleteById(id);
+        }
     }
 }

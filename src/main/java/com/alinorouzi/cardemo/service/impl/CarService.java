@@ -52,6 +52,8 @@ public class CarService implements ICarService {
 
     @Override
     public void delete(Integer id) {
-        carRepository.deleteById(id);
+        if (carRepository.existsById(id)) {
+            carRepository.deleteById(id);
+        }
     }
 }
